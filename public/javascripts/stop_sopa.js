@@ -34,7 +34,25 @@ CloudFlare.define(
                         el.append(obj)
                     })
                     function sopaMessage(text) {
-                        return $('<a class="sopafied" href="javascript:void(0);"></a>').text(text);
+
+                        var tokens = text.match(/[^\s]*\s?/gi),
+                            wrap = function(text) {
+
+                                return $('<a class="sopafied" href="javascript:void(0);"></a>').text(text);
+                            };
+
+                        return $.map(
+                            tokens,
+                            function(token) {
+
+                                if(token.length > 4)
+                                    token = wrap(token);
+                                else
+                                    token = token + "";
+
+                                return token;
+                            }
+                        );
                     }
                 }
             )
