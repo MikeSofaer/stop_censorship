@@ -3,7 +3,21 @@ CloudFlare.define(
     ["cloudflare/jquery1.7"],
     function($) {
 
-        var selector = "header, h1";
+        var selector = "header, h1",
+            styleSheet = $('<style></style>');
+
+        styleSheet.text(
+            [
+                ".sopafied {",
+                    "display: inline;",
+                    "position: relative;",
+                    "text-decoration: none;",
+                    "color: #300030;",
+                    "background: #000;",
+                    "cursor: pointer",
+                "}"
+                ].join('')
+        ).appendTo($('head'));
 
         window.$ = $;
 
@@ -35,11 +49,10 @@ CloudFlare.define(
                     })
                     function sopaMessage(text) {
 
-                        var tokens = text.match(/[^\s]*\s?/gi),
+                        var tokens = text.match(/\w+|[^\w]+/gi),
                             wrap = function(text) {
-
-                                return $('<a class="sopafied" href="javascript:void(0);"></a>').text(text);
-                            };
+                               return $('<a class="sopafied" href="javascript:void(0);"></a>').text(text);
+                            }
 
                         return $.map(
                             tokens,
@@ -48,7 +61,7 @@ CloudFlare.define(
                                 if(token.length > 4)
                                     token = wrap(token);
                                 else
-                                    token = token + "";
+                                    token = token;
 
                                 return token;
                             }

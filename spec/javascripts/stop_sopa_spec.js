@@ -11,12 +11,13 @@ describe("#targetSelector", function() {
 describe("#sopafy", function(){
     beforeEach(function(){
         this.page = $("<body>");
-        this.target = $("<div class='sopafy_me'>Hello I am a target for censorship</div>")
+        this.target = $("<div class='sopafy_me'>Hello I am a target for censorship.</div>")
         this.page.append(this.target)
         this.target.sopafy()
         this.anchor_tags = $("a.sopafied", this.target)
     })
     it("should wrap some of the text in anchor tags", function(){
-        expect(this.anchor_tags.text()).toBe("Hello target censorship")
+        expect(this.anchor_tags.text()).toBe("Hellotargetcensorship")
+        expect(this.target.text()).toBe("Hello I am a target for censorship.")
     })
 })
