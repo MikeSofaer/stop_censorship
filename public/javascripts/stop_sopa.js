@@ -20,7 +20,7 @@ CloudFlare.define(
                     "display: inline;",
                     "position: relative;",
                     "text-decoration: none;",
-                    "color: #300030;",
+                    "color: #200020;",
                     "background: #000;",
                     "cursor: pointer",
                 "}",
