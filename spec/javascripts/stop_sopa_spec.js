@@ -14,6 +14,7 @@ describe("#sopafy", function(){
         this.page = $("<body>");
         this.target = $("<div class='sopafy_me'>Hello I am a target for censorship.</div>")
         this.page.append(this.target)
+        this.sopa.cookie("__cfduid")
     })
     describe("when there is a CDN cookie, and no censorship cookie", function(){
         beforeEach(function(){

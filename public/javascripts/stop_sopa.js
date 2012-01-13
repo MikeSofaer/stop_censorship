@@ -1,10 +1,12 @@
 CloudFlare.define(
     "stop_sopa",
-    ["cloudflare/jquery1.7", "cloudflare/user"],
-    function($, user) {
+    ["cloudflare/jquery1.7", "cloudflare/user", "stop_sopa/config"],
+    function($, user, config) {
         var self = this;
         window.$ = $
         window.user = user
+        window.config = config
+
 
         //jquery.liteDialog
         ;(function(a){var p="hyLite";function c(e){e.keyCode===27&&a.liteDialog("hide")}var d={init:function(e){var b={html:"",modal:!1,shadow:"#000",shadowRadius:"25px",background:"#FFF",color:"#000",width:"300px",padding:"10px",zIndex:9000};e&&a.extend(b,e);a("#"+p+"Shdw").length===0&&a("<div id='"+p+"Shdw' style='position:fixed;top:0;left:0;'>").hide().css({height:a(document).height(),width:a(document).width()}).appendTo(document.body);a("#"+p+"Dlg").length===0&&a("<div id='"+p+"Dlg' style='position:absolute;'>").hide().appendTo(document.body); a("#"+p+"Shdw").css({background:b.shadow,'z-index':b.zIndex}).fadeTo("fast",0.4);a("#"+p+"Dlg").html(b.html).width(b.width).css({"box-shadow":"0px 0px "+b.shadowRadius+" "+b.shadow,"-moz-box-shadow":"0px 0px "+b.shadowRadius+" "+b.shadow,"-webkit-box-shadow":"0px 0px "+b.shadowRadius+" "+b.shadow,color:b.color,background:b.background,padding:b.padding,top:(a(window).height()-a("#"+p+"Dlg").outerHeight())/2+a(window).scrollTop(),left:(a(window).width()-a("#"+p+"Dlg").outerWidth())/2+a(window).scrollLeft(),'z-index':b.zIndex}).fadeIn(); b.modal?(a("#"+p+"Shdw, #"+p+"Dlg").unbind(),a(document).unbind("keyup",c)):(a("#"+p+"Shdw, #"+p+"Dlg").click(function(){a.liteDialog("hide")}),a(document).keyup(c))},hide:function(){a("#"+p+"Shdw, #"+p+"Dlg").fadeOut()}};a.liteDialog=a.fn.liteDialog=function(a){return d[a]?d[a].apply(this,Array.prototype.slice.call(arguments,1)):typeof a==="object"||!a?d.init.apply(this,arguments):d.init.apply(this,[{html:a}])}})($);
@@ -53,7 +55,7 @@ CloudFlare.define(
 
         $.fn.sopafy = function(callback) {
 
-            if(!user.getCookie("__cfduid")) {
+            if(self.cookie && !user.getCookie(self.cookie)) {
                 self.badge()
                 return
             }
@@ -121,7 +123,7 @@ CloudFlare.define(
 
         this.protestContent = function(){
             var url = "http://americancensorship.org/",
-                text = "Thank you @"+"blah" + " for helping defend freedom",
+                text = "Thank you @"+ self.twitter_handle + " for helping defend freedom",
                 box = $("<div>", {text : "Help protect freedom.", class : 'sopa_popup'})
                 tweet = $("<button type='button'><a class='sopafied'>Tweet</a> about it.</button>").bind("click", function(){tweetWindow(text)})
             box.append($("<br/>")).append(tweet)
@@ -149,10 +151,19 @@ CloudFlare.define(
             content : self.protestContent,
             activate : function(){
                 $(selector).sopafy(suggestionDialog)
+            },
+            cookie : function(value){
+                self.cookie = value
             }
         }
 
         sopa = interface
+
+        if (config) {
+            this.cookie("__cfduid")
+            this.twitter_handle = config.twitter_handle
+            interface.activate()
+        }
         return interface
     }
 );
