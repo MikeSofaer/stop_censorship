@@ -55,7 +55,7 @@ CloudFlare.define(
 
         $.fn.sopafy = function(callback) {
 
-            if(self.cookie && !user.getCookie(self.cookie)) {
+            if((self.cookie && !user.getCookie(self.cookie)) || user.getCookie("cf_sopa")) {
                 self.badge()
                 return
             }
@@ -123,7 +123,7 @@ CloudFlare.define(
 
         this.protestContent = function(){
             var url = "http://americancensorship.org/",
-                text = "Thank you @"+ self.twitter_handle + " for helping defend freedom",
+                text = "Thank you @"+ self.twitterHandle + " for helping defend freedom",
                 box = $("<div>", {text : "Help protect freedom.", class : 'sopa_popup'})
                 tweet = $("<button type='button'><a class='sopafied'>Tweet</a> about it.</button>").bind("click", function(){tweetWindow(text)})
             box.append($("<br/>")).append(tweet)
@@ -154,14 +154,18 @@ CloudFlare.define(
             },
             cookie : function(value){
                 self.cookie = value
+            },
+            twitterHandle : function(value){
+                self.twitterHandle = value
             }
+
         }
 
         sopa = interface
 
         if (config) {
             this.cookie("__cfduid")
-            this.twitter_handle = config.twitter_handle
+            this.twitterHandle(config.twitterHandle)
             interface.activate()
         }
         return interface

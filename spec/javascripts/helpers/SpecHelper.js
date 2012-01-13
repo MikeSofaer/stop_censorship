@@ -15,4 +15,5 @@ afterEach(function(){
     user.setCookie("__cfduid", "")
     user.setCookie("cf_sopa", "")
     $("a.sopa_badge").remove()
+    this.sopa.cookie()
 })

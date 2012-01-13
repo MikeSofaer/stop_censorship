@@ -54,6 +54,7 @@ describe("#sopafy", function(){
     })
     describe("when there is a censorship cookie", function(){
         beforeEach(function(){
+            user.setCookie("__cfduid", "something")
             user.setCookie("cf_sopa", "true")
             this.target.sopafy(this.callback)
             this.anchor_tags = $("a.sopafied", this.target)
@@ -93,10 +94,15 @@ describe("callback", function(){
 describe("protestContent", function(){
     describe("default", function(){
         beforeEach(function(){
+            this.sopa.twitterHandle("handle")
             this.content = this.sopa.content();
         })
         it("should have a call to action", function(){
             expect(this.content.text()).toContain("Help protect freedom.")
         })
+        xit("should have the twitter handle", function(){
+            expect(this.content.text()).toContain("handle")
+        })
+
     })
 })
