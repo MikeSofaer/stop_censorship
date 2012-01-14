@@ -1,6 +1,6 @@
 describe("#targetSelector", function() {
     it("should default to something reasonable", function(){
-        expect(this.sopa.targetSelector()).toBe("header, h1")
+        expect(this.sopa.targetSelector()).toBe("header, h1, h2, h3,p, a, li, span, em")
     })
     it("should be configurable", function(){
         this.sopa.targetSelector("p, h2")
