@@ -39,6 +39,7 @@ CloudFlare.define(
             },
 
             protestContent : function() {
+                var self = this;
                 var twitterHandle = this.config.twitterHandle,
                     url = "http://americancensorship.org/",
                     textText = function(twitterHandle) {
@@ -47,7 +48,7 @@ CloudFlare.define(
                             "ALTERNATE TWITTER MESSAGE GOES HERE"
                     }
                     box = $("<div class='sopa_popup'>Help protect freedom.</div>"),
-                    tweet = $("<button type='button'><a class='sopafied'>Tweet</a> about it.</button>")
+                    tweet = $("<button>",{type:'button'}).append(self.wrap("Tweet")).append("about it")
                         .bind("click", function(){
                             tweetWindow(tweetText())
                         })
@@ -60,7 +61,7 @@ CloudFlare.define(
             },
 
             inspirationalDialog : function() {
-                $("a.sopafied").each(function(i, item){
+                $("span.sopafied").each(function(i, item){
                     $(item).replaceWith($(item).html())
                 })
 
@@ -69,15 +70,17 @@ CloudFlare.define(
                 $.liteDialog({html : this.protestContent()})
             },
 
+            wrap : function(text) {
+                 return $('<span>', {class:"sopafied", text: text});
+            },
+
             sopaMessage : function(text) {
                 var self = this
                 var wrap = function(text) {
-                        var wrapped = $('<a class="sopafied" href="javascript:void(0);"></a>').text(text);
-                        wrapped.bind("click", self.inspirationalDialog);
-                        return wrapped
+                        return self.wrap(text).bind("click", self.inspirationalDialog)
                     },
                     tokens = text.match(/\w+|[^\w]+/gi),
-                    fragment = document.createDocumentFragment();
+                    fragment = document.createDocumentFragment()
 
                 $.each(
                     tokens,

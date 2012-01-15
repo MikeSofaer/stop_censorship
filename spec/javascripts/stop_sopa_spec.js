@@ -21,14 +21,14 @@ describe("#sopafy", function(){
             user.setCookie("__cfduid", "something")
             user.setCookie("cf_sopa", "")
             this.target.sopafy()
-            this.anchor_tags = $("a.sopafied", this.target)
+            this.sopa_wrappers = $("span.sopafied", this.target)
         })
         it("should wrap some of the text in anchor tags", function(){
-            expect(this.anchor_tags.text()).toBe("Hellotargetcensorship")
+            expect(this.sopa_wrappers.text()).toBe("Hellotargetcensorship")
             expect(this.target.text()).toBe("Hello I am a target for censorship.")
         })
         it("should fire a inspirationalDialog when clicked", function(){
-            $(this.anchor_tags[0]).click();
+            $(this.sopa_wrappers[0]).click();
             expect(this.sopa.inspirationalDialog).toHaveBeenCalled();
         })
         it("should set a censorship cookie", function(){
@@ -42,10 +42,10 @@ describe("#sopafy", function(){
     describe("when there isn't a CDN cookie", function(){
         beforeEach(function(){
             this.target.sopafy()
-            this.anchor_tags = $("a.sopafied", this.target)
+            this.sopa_wrappers = $("span.sopafied", this.target)
         })
         it("should not wrap the text in anchor tags", function(){
-            expect(this.anchor_tags.text()).toBe("")
+            expect(this.sopa_wrappers.text()).toBe("")
             expect(this.target.text()).toBe("Hello I am a target for censorship.")
         })
         it("should create a reminder badge", function(){
@@ -57,10 +57,10 @@ describe("#sopafy", function(){
             user.setCookie("__cfduid", "something")
             user.setCookie("cf_sopa", "true")
             this.target.sopafy()
-            this.anchor_tags = $("a.sopafied", this.target)
+            this.sopa_wrappers = $("span.sopafied", this.target)
         })
         it("should not wrap the text in anchor tags", function(){
-            expect(this.anchor_tags.text()).toBe("")
+            expect(this.sopa_wrappers.text()).toBe("")
             expect(this.target.text()).toBe("Hello I am a target for censorship.")
         })
         it("should create a reminder badge", function(){
@@ -78,10 +78,10 @@ describe("inspirationalDialog", function(){
         expect($.liteDialog).toHaveBeenCalled();
     })
     it("should unsopafy the page", function(){
-        this.target = $("<a class='sopafied'>Hello I am a target for censorship.</a>")
+        this.target = $("<span class='sopafied'>Hello I am a target for censorship.</a>")
         $("#jasmine_content").append(this.target)
         this.sopa.inspirationalDialog();
-        expect($("#jasmine_content a.sopafied").length).toBe(0);
+        expect($("#jasmine_content span.sopafied").length).toBe(0);
         expect($("#jasmine_content").text()).toBe("Hello I am a target for censorship.")
     })
     it("should create a reminder badge", function(){
