@@ -4,6 +4,8 @@ beforeEach(function() {
 
     var promise = CloudFlare.require(["stop_sopa"], function(sopa){
         self.sopa = sopa;
+        window.$ = sopa.$
+        window.user = sopa.user
     })
 
     waitsFor(function(){
@@ -15,5 +17,5 @@ afterEach(function(){
     user.setCookie("__cfduid", "")
     user.setCookie("cf_sopa", "")
     $("a.sopa_badge").remove()
-    this.sopa.cookie()
+    this.sopa.config.cookie = null
 })
