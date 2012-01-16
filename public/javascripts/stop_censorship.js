@@ -33,7 +33,7 @@ CloudFlare.define(
                 var self = this,
                     side = /^right$|^left$/i.test(self.config.position_x) ? self.config.position_x.toLowerCase() : 'right';
 
-                return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge " + side + (dom.internetExplorer < 9 ? " ie" : "") + "'>")
+                return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge _cf_censorship_" + side + (dom.internetExplorer < 9 ? " ie" : "") + "'>")
                             .bind("click", function(){ self.inspirationalDialog() })
             },
             placeBadge : function(){
@@ -74,7 +74,7 @@ CloudFlare.define(
                         $("<option>", {text: state})
                     )
                 })
-                return $("<div class='phone'></div>").append(label).append(dropdown).append(target)
+                return $("<div></div>").append(label).append(dropdown).append(target)
             },
 
             protestContent : function() {
@@ -103,22 +103,22 @@ CloudFlare.define(
                         .bind("click", function(){
                             self.tweetWindow(tweetText())
                         }),
-                    recensorButton = $("<button class='recensor'>").text("I liked the bars, put them back!")
+                    recensorButton = $("<button>").text("I liked the bars, put them back!")
                         .bind("click", function(){
                             user.setCookie("cf_sopa", "")
                             self.activate()
                         }),
-                    americanCensorshipLink = $("<a class='more_info'>")
+                    americanCensorshipLink = $("<a>")
                         .attr("rel","nofollow")
                         .attr("href",censorshipUrl)
                         .attr("target", "_blank")
                         .text("Read more at AmericanCensorship.org"),
-                    githubLink = $("<a class='github'>")
+                    githubLink = $("<a>")
                         .attr("rel","nofollow")
                         .attr("href",githubUrl)
                         .attr("target", "_blank")
                         .text("Get this app for your page"),
-                    close = $("<button class='close'>").text("Close this window")
+                    close = $("<button>").text("Close this window")
                         .bind("click", function() {
                             $.liteDialog('hide');
                         }),
