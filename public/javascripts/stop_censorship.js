@@ -83,7 +83,7 @@ CloudFlare.define(
                 var twitterHandle = this.config.twitterHandle,
                     censorshipUrl = "http://americancensorship.org/",
                     githubUrl = "http://mikesofaer.github.com/stop_censorship/",
-                    tweetText = function(twitterHandle) {
+                    tweetText = function() {
 
                         var locationParts = path.parseURL(window.location.toString());
 
