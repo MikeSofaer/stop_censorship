@@ -62,13 +62,14 @@ CloudFlare.define(
                     }
                 })
                 var target = $("<div class='senator_info'>")
-                var dropdown = $("<label for='StopCensorshipStates'>Select your state:</label><select id='StopCensorshipStates'>").bind("change", function(){
+                var dropdown = $("<select id='StopCensorshipStates'>").bind("change", function(){
                     var state = $(this).val()
                     var senators = senatorsByState[state]
                     console.log(this, $(this), $(this).val(), state, senators, senators.toString())
 
                     target.html(senators.slice(0, 2).join(', ') + (senators.length > 2 ? '<br />' + senators.slice(2, 4).join(', ') : ''))
                 })
+                $("<label for='StopCensorshipStates'>Select your state:</label>").insertBefore(dropdown);
                 $.each(senatorsByState, function(state, senators){
                     dropdown.append(
                         $("<option>", {text: state})
