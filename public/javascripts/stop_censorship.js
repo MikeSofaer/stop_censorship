@@ -1,7 +1,7 @@
 CloudFlare.define(
     "stop_censorship",
-    ["cloudflare/jquery1.7", "cloudflare/user", "stop_sopa/config"],
-    function($, user, _config) {
+    ["cloudflare/jquery1.7", "cloudflare/user", "cloudflare/dom", "stop_censorship/config"],
+    function($, user, dom, _config) {
 
         var SopaProtest = function SopaProtest(config){
             var self=this
@@ -10,6 +10,8 @@ CloudFlare.define(
                 self.cookie = "__cfduid"
             }
         }
+
+        var cdnPath = "http://mikesofaer.github.com/stop_censorship/public/";
 
         var config = $.extend({
             selector : "header, h1, h2, h3,p, a, li, span, em",
@@ -25,8 +27,10 @@ CloudFlare.define(
 
         $.extend(SopaProtest.prototype, {
             badge : function(){
-                var self = this
-                return $("<span>", {class: 'sopa_badge', text: "CENSORED"})
+                var self = this,
+                    side = /^right$|^left$/i.test(self.config.position_x) ? self.config.position_x.toLowerCase() : 'right';
+                
+                return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge " + side + (dom.internetExplorer ? " ie" : "") + "'>")
                             .bind("click", function(){ self.inspirationalDialog() })
             },
             placeBadge : function(){
