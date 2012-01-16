@@ -11,7 +11,7 @@ Put your site on CloudFlare and then add the Stop Censorship application
 To test it out, use this bookmarklet:
 
 ```javascript
-javascript:try{if(!window.CloudFlare){window.CloudFlare=[];var a=document.createElement("script"),b=document.getElementsByTagName("head")[0];a.type="text/javascript";a.async=!0;a.src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js";b.appendChild(a)}}catch(c){};var a=window.CloudFlare;a.push({paths:{stop_censorship:"//ajax.cloudflare.com/cdn-cgi/nexp/apps/"}});a.push(function(b,c){c("stop_censorship/config",function(){return {}});b(["stop_censorship"])});
+javascript:(function() {try{if(!window.CloudFlare){window.CloudFlare=[];var a=document.createElement("script"),b=document.getElementsByTagName("head")[0];a.type="text/javascript";a.async=!0;a.src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js";b.appendChild(a)}}catch(c){};var a=window.CloudFlare;a.push({paths:{stop_censorship:"//ajax.cloudflare.com/cdn-cgi/nexp/apps/"}});a.push(function(b,c){c("stop_censorship/config",function(){return {}});b(["stop_censorship"])})})();
 ```
 
 or run this in your browser's console:
