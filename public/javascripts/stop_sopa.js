@@ -1,5 +1,5 @@
 CloudFlare.define(
-    "stop_censorship",
+    "stop_sopa",
     ["cloudflare/jquery1.7", "cloudflare/user", "stop_sopa/config"],
     function($, user, _config) {
 
@@ -178,7 +178,7 @@ CloudFlare.define(
                     contents.each(
                         function(index, content) {
 
-                            if(!$(content).closest('a').length && 'nodeName' in content && content.nodeName === '#text')
+                            if('nodeName' in content && content.nodeName === '#text')
                                 sopaProtest.oppressNode(content)
                         }
                     );
