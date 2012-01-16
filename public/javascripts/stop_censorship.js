@@ -1,7 +1,7 @@
 CloudFlare.define(
     "stop_censorship",
-    ["cloudflare/jquery1.7", "cloudflare/user", "cloudflare/dom", "cloudflare/console", "stop_censorship/config"],
-    function($, user, dom, console, _config) {
+    ["cloudflare/jquery1.7", "cloudflare/user", "cloudflare/dom", "cloudflare/path", "cloudflare/console", "stop_censorship/config"],
+    function($, user, dom, path, console, _config) {
 
         var SopaProtest = function SopaProtest(config){
             var self=this
