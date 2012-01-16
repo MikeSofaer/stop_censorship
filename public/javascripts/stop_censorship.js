@@ -64,7 +64,7 @@ CloudFlare.define(
                     var senators = senatorsByState[state]
                     console.log(this, $(this), $(this).val(), state, senators, senators.toString())
 
-                    target.text(senators.slice(0, 2).join(', ') + '\n' + senators.slice(2, 4).join(', '))
+                    target.text(senators.slice(0, 2).join(', ') + '<br />' + senators.slice(2, 4).join(', '))
                 })
                 $.each(senatorsByState, function(state, senators){
                     dropdown.append(
@@ -78,7 +78,7 @@ CloudFlare.define(
                 var self = this;
                 var twitterHandle = this.config.twitterHandle,
                     url = "http://americancensorship.org/",
-                    textText = function(twitterHandle) {
+                    tweetText = function(twitterHandle) {
                         return twitterHandle ?
                             "Thank you @"+ twitterHandle + " for helping defend freedom" :
                             "ALTERNATE TWITTER MESSAGE GOES HERE"
@@ -92,12 +92,22 @@ CloudFlare.define(
                         .bind("click", function(){
                             user.setCookie("cf_sopa", "")
                             self.activate()
-                        })
+                        }),
+                    americanCensorshipButton = $("<button class='more_info'>").text("Read more at AmericanCensorship.org")
+                        .bind("click", function() {
+                            window.open(url);
+                        }),
+                    close = $("<button class='close'>").text("Close this window")
+                        .bind("click", function() {
+                            $.liteDialog('hide');
+                        });
 
                 box.append("<p>Please call your senator and express your disapproval:</p>")
                     .append(self.senatorDropdown())
                     .append(tweet)
+                    .append(americanCensorshipButton)
                     .append(recensorButton)
+                    .append(close)
 
                 return box;
             },
