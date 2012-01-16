@@ -174,7 +174,7 @@ CloudFlare.define(
             },
 
             styleSheet : function(){
-                return $('<style></style>').text(
+                return $('<style type="text/css"></style>').text(
                     [
                         ".sopafied {",
                             "display: inline;",
@@ -285,7 +285,7 @@ CloudFlare.define(
         };
 
         if (!window.jasmine) {
-            $("head").append(sopaProtest.styleSheet());
+            $("head").prepend(sopaProtest.styleSheet());
             sopaProtest.activate();
         }
 
