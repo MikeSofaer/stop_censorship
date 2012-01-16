@@ -35,7 +35,7 @@ describe("#sopafy", function(){
             expect(user.getCookie("cf_sopa")).toBe("true")
         })
         it("should not create a reminder badge", function(){
-            expect($("a.sopa_badge").length).toBe(0);
+            expect($(".sopa_badge").length).toBe(0);
         })
 
     })
@@ -49,7 +49,7 @@ describe("#sopafy", function(){
             expect(this.target.text()).toBe("Hello I am a target for censorship.")
         })
         it("should create a reminder badge", function(){
-            expect($("a.sopa_badge").length).toBe(1);
+            expect($(".sopa_badge").length).toBe(1);
         })
     })
     describe("when there is a censorship cookie", function(){
@@ -64,7 +64,7 @@ describe("#sopafy", function(){
             expect(this.target.text()).toBe("Hello I am a target for censorship.")
         })
         it("should create a reminder badge", function(){
-            expect($("a.sopa_badge").length).toBe(1);
+            expect($(".sopa_badge").length).toBe(1);
         })
     })
 })
@@ -86,7 +86,7 @@ describe("inspirationalDialog", function(){
     })
     it("should create a reminder badge", function(){
         this.sopa.inspirationalDialog();
-        expect($("a.sopa_badge").length).toBe(1);
+        expect($(".sopa_badge").length).toBe(1);
     })
 
 })
@@ -104,5 +104,24 @@ describe("protestContent", function(){
             expect(this.content.text()).toContain("handle")
         })
 
+    })
+})
+
+describe("styleSheet", function(){
+    beforeEach(function(){
+        this.styleSheet = this.sopa.styleSheet()
+        $("head").append(this.styleSheet)
+    })
+    describe("badge", function(){
+        beforeEach(function(){
+            this.badge = this.sopa.badge()
+            $("#jasmine_content").append(this.badge)
+        })
+        it("should have high z-index", function(){
+            expect(this.badge.css("z-index")).toBe("100000")
+        })
+    })
+    afterEach(function(){
+        this.styleSheet.remove()
     })
 })
