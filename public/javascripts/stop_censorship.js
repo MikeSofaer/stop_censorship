@@ -153,7 +153,7 @@ CloudFlare.define(
                         "}\n",
                         ".sopa_badge.left {",
                             "top: 25px;",
-                            "left: -63px;"
+                            "left: -63px;",
                             "-webkit-transform:rotate(-45deg);",
                             "-mox-transform:rotate(-45deg);",
                             "-o-transform:rotate(-45deg);",
