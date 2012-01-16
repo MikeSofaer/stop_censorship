@@ -109,8 +109,16 @@ CloudFlare.define(
                             user.setCookie("cf_sopa", "")
                             self.activate()
                         }),
-                    americanCensorshipLink = $("<a class='more_info'>", {rel : "nofollow", href : censorshipUrl, target : "_blank", text : "Read more at AmericanCensorship.org"}),
-                    githubLink = $("<a class='github'>", {rel : "nofollow", href : githubUrl, target : "_blank", text : "Get this app for your page"}),
+                    americanCensorshipLink = $("<a class='more_info'>")
+                        .attr("rel","nofollow")
+                        .attr("href",censorshipUrl)
+                        .attr("target", "_blank")
+                        .text("Read more at AmericanCensorship.org"),
+                    githubLink = $("<a class='github'>"})
+                        .attr("rel","nofollow")
+                        .attr("href",githubUrl)
+                        .attr("target", "_blank")
+                        .text("Get this app for your page"),
                     close = $("<button class='close'>").text("Close this window")
                         .bind("click", function() {
                             $.liteDialog('hide');
