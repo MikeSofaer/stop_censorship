@@ -90,7 +90,7 @@ CloudFlare.define(
                         }),
                     recensorButton = $("<button>", {"class" : "recensor", text: "I liked the bars, put them back!"})
                         .bind("click", function(){
-                            user.setCookie("cfsopa", "")
+                            user.setCookie("cf_sopa", "")
                             self.activate()
                         })
 

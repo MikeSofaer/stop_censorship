@@ -133,7 +133,7 @@ describe("protestContent", function(){
             spyOn(user, "setCookie")
             spyOn($.fn, "sopafy")
             $(this.content.find(".recensor")).click()
-            expect(user.setCookie.calls[0].args).toEqual(["cfsopa", ""])
+            expect(user.setCookie.calls[0].args).toEqual(["cf_sopa", ""])
             expect($.fn.sopafy).toHaveBeenCalled()
         })
 
