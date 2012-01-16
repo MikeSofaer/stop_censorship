@@ -103,16 +103,16 @@ CloudFlare.define(
                         .bind("click", function(){
                             self.tweetWindow(tweetText())
                         }),
-                    recensorButton = $("<button class='recensor'>", {text: "I liked the bars, put them back!"})
+                    recensorButton = $("<button class='recensor'>").text("I liked the bars, put them back!")
                         .bind("click", function(){
                             user.setCookie("cf_sopa", "")
                             self.activate()
                         }),
-                    americanCensorshipButton = $("<button class='more_info'>", {rel : "nofollow", text : "Read more at AmericanCensorship.org"})
+                    americanCensorshipButton = $("<button class='more_info'>", {rel : "nofollow"}).text("Read more at AmericanCensorship.org")
                         .bind("click", function() {
                             window.open(censorshipUrl);
                         }),
-                    githubButton = $("<button class='github'>", {rel : "nofollow", text : "Get this app for your page"})
+                    githubButton = $("<button class='github'>", {rel : "nofollow"}).text("Get this app for your page")
                         .bind("click", function() {
                             window.open(githubUrl);
                         }),
