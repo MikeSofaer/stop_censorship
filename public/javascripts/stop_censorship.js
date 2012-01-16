@@ -74,7 +74,7 @@ CloudFlare.define(
                         $("<option>", {text: state})
                     )
                 })
-                return $("<div>", {"class": "phone"}).append(dropdown).append(target)
+                return $("<div class='phone'></div>").append(dropdown).append(target)
             },
 
             protestContent : function() {
@@ -102,7 +102,7 @@ CloudFlare.define(
                         .bind("click", function(){
                             self.tweetWindow(tweetText())
                         }),
-                    recensorButton = $("<button>", {"class" : "recensor", text: "I liked the bars, put them back!"})
+                    recensorButton = $("<button class='recensor'>I liked the bars, put them back!</button>")
                         .bind("click", function(){
                             user.setCookie("cf_sopa", "")
                             self.activate()
@@ -138,7 +138,7 @@ CloudFlare.define(
             },
 
             wrap : function(text) {
-                 return $('<span>', {class:"sopafied", text: text});
+                 return $('<span class="sopafied">' + text + '</span>');
             },
 
             sopaMessage : function(text) {
