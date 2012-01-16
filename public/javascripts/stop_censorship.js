@@ -109,7 +109,7 @@ CloudFlare.define(
 
                 this.placeBadge();
 
-                $.liteDialog({html : this.protestContent()})
+                $.liteDialog({ modal: true, html : this.protestContent() })
             },
 
             wrap : function(text) {
