@@ -33,7 +33,7 @@ CloudFlare.define(
                 var self = this,
                     side = /^right$|^left$/i.test(self.config.position_x) ? self.config.position_x.toLowerCase() : 'right';
 
-                return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge " + side + (dom.internetExplorer < 9 ? " ie" : "") + "'>")
+                return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge _cf_censorship_" + side + (dom.internetExplorer < 9 ? " ie" : "") + "'>")
                             .bind("click", function(){ self.inspirationalDialog() })
             },
             placeBadge : function(){
