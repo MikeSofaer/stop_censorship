@@ -74,7 +74,7 @@ CloudFlare.define(
                         $("<option>", {text: state})
                     )
                 })
-                return $("<div class='phone'></div>").append(dropdown.before(label)).append(target)
+                return $("<div class='phone'></div>").append(label).append(dropdown).append(target)
             },
 
             protestContent : function() {
