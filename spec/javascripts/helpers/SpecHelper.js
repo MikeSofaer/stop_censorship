@@ -2,7 +2,7 @@ beforeEach(function() {
     this.sopa = null;
     var self = this;
 
-    var promise = CloudFlare.require(["stop_sopa"], function(sopa){
+    var promise = CloudFlare.require(["stop_censorship"], function(sopa){
         self.sopa = sopa;
         window.$ = sopa.$
         window.user = sopa.user
