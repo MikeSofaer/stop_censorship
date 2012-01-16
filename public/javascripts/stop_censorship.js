@@ -72,7 +72,7 @@ CloudFlare.define(
                     .append($("<br/>"))
                     .append(tweet)
 
-                ;(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}})(document,"script","twitter-wjs");
+                /*;(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}})(document,"script","twitter-wjs");*/
 
                 return box;
             },
@@ -137,20 +137,28 @@ CloudFlare.define(
                         "}",
                         "\n",
                         ".sopa_badge {",
-                            "background: #000;",
-                            "cursor: pointer",
+                            "background: transparent;",
+                            "cursor: pointer;",
                             "text-decoration: none;",
                             "position: fixed;",
-                            "top: 25px;",
-                            "right: -25px;",
-                            "padding: 1px 20px;",
                             "z-index: 100000;",
+                        "}\n",
+                        ".sopa_badge.right {",
+                            "top: 25px;",
+                            "right: -63px;",
                             "-webkit-transform:rotate(45deg);",
                             "-mox-transform:rotate(45deg);",
                             "-o-transform:rotate(45deg);",
                             "-ms-transform:rotate(45deg);",
-                        "}",
-                        "\n",
+                        "}\n",
+                        ".sopa_badge.left {",
+                            "top: 25px;",
+                            "left: -63px;"
+                            "-webkit-transform:rotate(-45deg);",
+                            "-mox-transform:rotate(-45deg);",
+                            "-o-transform:rotate(-45deg);",
+                            "-ms-transform:rotate(-45deg);",
+                        "}\n",
                         ".sopa_popup button{",
                             "margin-top: 10px;",
                         "}",
