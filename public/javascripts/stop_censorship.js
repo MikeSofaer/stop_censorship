@@ -68,7 +68,7 @@ CloudFlare.define(
 
                     target.html(senators[0].join(', ') + (senators.length > 1 ? '<br />' + senators[1].join(', ') : ''))
                 })
-                $("<label for='StopCensorshipStates'>Select your state:</label>").insertBefore(dropdown);
+                $("<label for='StopCensorshipStates'>Select your state</label>").insertBefore(dropdown);
                 $.each(senatorsByState, function(state, senators){
                     dropdown.append(
                         $("<option>", {text: state})
@@ -123,8 +123,8 @@ CloudFlare.define(
                             $.liteDialog('hide');
                         });
 
-                box.append("<p>There is currently legislation under consideration that threatens most of the websites you care about.</p>")
-                    .append("<p>Call your Senator and say No to PIPA:</p>")
+                box.append("<p>There is currently United States legislation under consideration that threatens most of the websites you care about.</p>")
+                    .append("<p>Call your Senator and say No to PIPA!</p>")
                     .append(self.senatorDropdown())
                     .append(tweet)
                     .append(recensorButton)
