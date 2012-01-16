@@ -136,6 +136,9 @@ describe("protestContent", function(){
             expect(user.setCookie.calls[0].args).toEqual(["cf_sopa", ""])
             expect($.fn.sopafy).toHaveBeenCalled()
         })
+        it("should have a link to the PIPA video", function(){
+           expect(this.content.html()).toContain("http://fightforthefuture.org/pipa")
+        })
 
     })
 })

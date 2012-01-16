@@ -85,6 +85,7 @@ CloudFlare.define(
                     censorshipUrl = "http://americancensorship.org/",
                     githubUrl = "http://mikesofaer.github.com/stop_censorship/",
                     hashtag = "savetheweb",
+                    fftfUrl = "http://fightforthefuture.org/pipa",
                     tweetText = function() {
 
                         var locationParts = path.parseURL(window.location.toString());
@@ -125,6 +126,11 @@ CloudFlare.define(
                         .attr("href",githubUrl)
                         .attr("target", "_blank")
                         .text("Get this app for your page"),
+                    fftfLink = $("<a>")
+                        .attr("rel","nofollow")
+                        .attr("href",fftfUrl)
+                        .attr("target", "_blank")
+                        .text("See the video at Fight for the Future"),
                     close = $("<button>").text("Close this window")
                         .bind("click", function() {
                             $.liteDialog('hide');
@@ -135,6 +141,7 @@ CloudFlare.define(
                         self.senatorDropdown(),
                         tweet,
                         recensorButton,
+                        fftfLink,
                         americanCensorshipLink,
                         githubLink,
                         close
