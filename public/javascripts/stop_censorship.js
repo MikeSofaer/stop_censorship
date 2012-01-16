@@ -68,13 +68,13 @@ CloudFlare.define(
 
                     target.html(senators[0].join(', ') + (senators.length > 1 ? '<br />' + senators[1].join(', ') : ''))
                 })
-                $("<label for='StopCensorshipStates'>Select your state</label>").insertBefore(dropdown);
+                var label = $("<label for='StopCensorshipStates'>Select your state</label>");
                 $.each(senatorsByState, function(state, senators){
                     dropdown.append(
                         $("<option>", {text: state})
                     )
                 })
-                return $("<div class='phone'></div>").append(dropdown).append(target)
+                return $("<div class='phone'></div>").append(dropdown.before(label)).append(target)
             },
 
             protestContent : function() {
