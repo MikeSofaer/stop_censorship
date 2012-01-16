@@ -1,7 +1,7 @@
 CloudFlare.define(
     "stop_censorship",
-    ["cloudflare/jquery1.7", "cloudflare/user", "cloudflare/dom", "stop_censorship/config"],
-    function($, user, dom, _config) {
+    ["cloudflare/jquery1.7", "cloudflare/user", "cloudflare/dom", "cloudflare/console", "stop_censorship/config"],
+    function($, user, dom, console, _config) {
 
         var SopaProtest = function SopaProtest(config){
             var self=this
@@ -58,7 +58,7 @@ CloudFlare.define(
                         senatorsByState[senator[0]] = [[senator[1], senator[2]]]
                     }
                 })
-                var target = $("<div>")
+                var target = $("<div class='senator-info'>")
                 var dropdown = $("<select>").bind("change", function(){
                     var state = $(this).val()
                     var senators = senatorsByState[state]
@@ -82,20 +82,15 @@ CloudFlare.define(
                             "Thank you @"+ twitterHandle + " for helping defend freedom" :
                             "ALTERNATE TWITTER MESSAGE GOES HERE"
                     }
-                    box = $("<div class='sopa_popup'>Help protect freedom.</div>"),
-                    tweet = $("<button>",{type:'button'}).append(self.wrap("Tweet")).append("about it")
+                    box = $("<div class='sopa_popup'><h2>Help protect freedom.</h2></div>"),
+                    tweet = $("<button>",{type:'button'}).text("Tweet about it.")
                         .bind("click", function(){
                             tweetWindow(tweetText())
                         })
-                box.append("Please call your senator and")
-                    .append(self.wrap("express"))
-                    .append(" your ")
-                    .append(self.wrap("disapproval"))
-                    .append($("<br/>"))
-                    .append(self.senatorDropdown())
-                    .append($("<br/>"))
-                    .append(tweet)
 
+                box.append("<p>Please call your senator and express your disapproval:</p>");
+                box.append(self.senatorDropdown());
+            
                 /*;(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}})(document,"script","twitter-wjs");*/
 
                 return box;
@@ -191,13 +186,40 @@ CloudFlare.define(
                             "top: 0px;",
                             "left: 20px;",
                         "}\n",
-                        ".sopa_popup button{",
+                        ".sopa_popup .senator_info {",
+                            "display: block;",
+                            "position: relative;",
+                            "padding: 8px;",
+                            "margin: 8px;",
+                            "border: 1px solid #e0e0e0;",
+                            "background: #f0f0f0;",
+                            "color: #808080",
+                            "font-weight: 300",
+                        "}\n",
+                        ".sopa_popup button {",
                             "margin-top: 10px;",
+                            "padding: 3px;",
                         "}",
                         "\n",
+                        ".sopa_popup h2 {",
+                            "font-size: 20px",
+                            "font-weight: 800",
+                        "}",
+                        ".sopa_popup p {",
+                            "font-size: 14px",
+                            "font-weight: 500",
+                        "}",
                         ".sopa_popup {",
-                            "text-align: center",
-                        "}"
+                            "font-family: 'Helvetica Neue', Arial, sans-serif !important;",
+                            "text-align: center;",
+                        "}",
+                        "#hyLiteDlg {",
+                            "border-radius: 4px;",
+                            "-webkit-border-radius: 4px;",
+                            "-moz-border-radius: 4px;",
+                            "-o-border-radius: 4px;",
+                            "-ms-border-radius: 4px;",
+                        "}\n"
                     ].join('')
                 )
             },
