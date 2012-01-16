@@ -11,17 +11,17 @@
         <p>If you are on CloudFlare, you can enable <a href="https://www.cloudflare.com/apps/stop_censorship">the Stop Censorship app</a> in your apps panel.</p>
         <p>If you are not on CloudFlare, you can embed this snippet in your page to enable the app.</p>
         <pre>
-            <script type="text/javascript"> var CloudFlare = CloudFlare || []; </script>
-            <script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js" async></script>
-            <script type="text/javascript">
+            &lt;script type="text/javascript"&gt; var CloudFlare = CloudFlare || []; &lt;/script&gt;
+            &lt;script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js" async&gt;&lt;/script&gt;
+            &lt;script type="text/javascript"&gt;
                 var censorshipConfig = {
                     "twitterHandle" : "MyTwitterHandle", // Your Twitter handle; if not provided, your website domain will be used.
                     "position_x" : "right", // Badge position - right or left
                     "selector" : "p, h1, .censor_me", // Optional selector for elements to censor. Remove for default.
-                    "regex" : '.{5}' //In case you like Regexes, and want to change the logic for how to black out text.
-                }
+                    "regex" : ".{5}" //In case you like Regexes, and want to change the logic for how to black out text.
+                    }
                 var a=window.CloudFlare;a.push({paths:{stop_censorship:"//ajax.cloudflare.com/cdn-cgi/nexp/apps/"}});a.push(function(b,c){c("stop_censorship/config",function(){return censorshipConfig});b(["stop_censorship"])});
-            </script>
+            &lt;/script&gt;
         </pre>
 
 
