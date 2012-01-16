@@ -27,6 +27,20 @@ describe("#sopafy", function(){
             expect(this.sopa_wrappers.text()).toBe("Hellotargetcensorship")
             expect(this.target.text()).toBe("Hello I am a target for censorship. This anchor should not be censored!")
         })
+        it("should open a dialog when a span is clicked", function() {
+            /*var spanWrapper = this.target.find('span.sopafied').eq(0);
+
+            spanWrapper.click();
+
+            var dialog = this.page.find('.sopa_popup');
+
+            console.info(this.page);
+
+            expect(dialog.length).toBe(1);*/
+
+            // This won't work unless we have a DOM
+            
+        })
         it("should fire a inspirationalDialog when clicked", function(){
             $(this.sopa_wrappers[0]).click();
             expect(this.sopa.inspirationalDialog).toHaveBeenCalled();

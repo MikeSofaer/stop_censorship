@@ -94,7 +94,7 @@ CloudFlare.define(
             sopaMessage : function(text) {
                 var self = this
                 var wrap = function(text) {
-                        return self.wrap(text).bind("click", self.inspirationalDialog)
+                        return self.wrap(text).bind("click", function() { self.inspirationalDialog() })
                     },
                     tokens = text.match(/\w+|[^\w]+/gi),
                     fragment = document.createDocumentFragment()
