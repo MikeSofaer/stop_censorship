@@ -30,7 +30,7 @@ CloudFlare.define(
                 var self = this,
                     side = /^right$|^left$/i.test(self.config.position_x) ? self.config.position_x.toLowerCase() : 'right';
                 
-                return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge " + side + (dom.internetExplorer ? " ie" : "") + "'>")
+                return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge " + side + (dom.internetExplorer < 9 ? " ie" : "") + "'>")
                             .bind("click", function(){ self.inspirationalDialog() })
             },
             placeBadge : function(){
@@ -147,7 +147,7 @@ CloudFlare.define(
                             "top: 25px;",
                             "right: -63px;",
                             "-webkit-transform:rotate(45deg);",
-                            "-mox-transform:rotate(45deg);",
+                            "-moz-transform:rotate(45deg);",
                             "-o-transform:rotate(45deg);",
                             "-ms-transform:rotate(45deg);",
                         "}\n",
@@ -155,9 +155,17 @@ CloudFlare.define(
                             "top: 25px;",
                             "left: -63px;",
                             "-webkit-transform:rotate(-45deg);",
-                            "-mox-transform:rotate(-45deg);",
+                            "-moz-transform:rotate(-45deg);",
                             "-o-transform:rotate(-45deg);",
                             "-ms-transform:rotate(-45deg);",
+                        "}\n",
+                        ".sopa_badge.right.ie {",
+                            "top: 0px;",
+                            "right: 20px;",
+                        "}\n",
+                        ".sopa_badge.left.ie {",
+                            "top: 0px;",
+                            "left: 20px;",
                         "}\n",
                         ".sopa_popup button{",
                             "margin-top: 10px;",
