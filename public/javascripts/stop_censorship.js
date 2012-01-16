@@ -11,7 +11,7 @@ CloudFlare.define(
             }
         }
 
-        var cdnPath = "http://mikesofaer.github.com/stop_censorship/public/";
+        var cdnPath = "//ajax.cloudflare.com/cdn-cgi/nexp/";
 
         var config = $.extend({
             selector : "header, h1, h2, h3, p, li, span, em",
