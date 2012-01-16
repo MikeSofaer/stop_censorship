@@ -143,6 +143,7 @@ CloudFlare.define(
                 this.placeBadge();
 
                 $.liteDialog({ modal: true, html : this.protestContent() })
+                $('#hyLiteShdw').bind('click', function() { $.liteDialog('hide'); });
             },
 
             wrap : function(text) {
