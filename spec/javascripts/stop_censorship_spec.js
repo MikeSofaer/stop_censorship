@@ -119,7 +119,7 @@ describe("protestContent", function(){
             this.content = this.sopa.protestContent();
         })
         it("should have a call to action", function(){
-            expect(this.content.text()).toContain("Help protect freedom.")
+            expect(this.content.text()).toContain("Help Protect Freedom.")
         })
         xit("should have the twitter handle", function(){
             expect(this.content.text()).toContain("handle")
