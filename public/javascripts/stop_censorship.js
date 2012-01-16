@@ -170,7 +170,7 @@ CloudFlare.define(
                     contents.each(
                         function(index, content) {
 
-                            if('nodeName' in content && content.nodeName === '#text')
+                            if(!$(content).closest('a').length && 'nodeName' in content && content.nodeName === '#text')
                                 sopaProtest.oppressNode(content)
                         }
                     );
