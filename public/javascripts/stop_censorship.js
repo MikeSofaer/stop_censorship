@@ -109,15 +109,8 @@ CloudFlare.define(
                             user.setCookie("cf_sopa", "")
                             self.activate()
                         }),
-                    americanCensorshipButton = $("<button class='more_info'>", {rel : "nofollow"}).text("Read more at AmericanCensorship.org")
-                        .bind("click", function() {
-                            window.open(censorshipUrl);
-                        }),
-                    githubButton = $("<button class='github'>", {rel : "nofollow"}).text("Get this app for your page")
-                        .bind("click", function() {
-                            window.open(githubUrl);
-                        }),
-
+                    americanCensorshipLink = $("<a class='more_info'>", {rel : "nofollow", href : censorshipUrl, target : "_blank", text : "Read more at AmericanCensorship.org"}),
+                    githubLink = $("<a class='github'>", {rel : "nofollow", href : githubUrl, target : "_blank", text : "Get this app for your page"}),
                     close = $("<button class='close'>").text("Close this window")
                         .bind("click", function() {
                             $.liteDialog('hide');
@@ -127,9 +120,10 @@ CloudFlare.define(
                     .append("<p>Call your Senator and say No to PIPA:</p>")
                     .append(self.senatorDropdown())
                     .append(tweet)
-                    .append(americanCensorshipButton)
                     .append(recensorButton)
-                    .append(githubButton)
+                    .append(americanCensorshipLink)
+                    .append(githubLink)
+                    .append("<br/>")
                     .append(close)
 
                 return box;
