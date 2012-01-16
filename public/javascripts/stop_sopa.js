@@ -24,8 +24,13 @@ CloudFlare.define(
 
 
         $.extend(SopaProtest.prototype, {
+            badge : function(){
+                var self = this
+                return $("<span>", {class: 'sopa_badge', text: "CENSORED"})
+                            .bind("click", function(){ self.inspirationalDialog() })
+            },
             placeBadge : function(){
-                $("body").append("<a class='sopa_badge' href='http://americancensorship.org' target='_blank'>CENSORED</a>")
+                $("body").append(this.badge())
             },
 
             tweetWindow : function(text, url) {
@@ -106,41 +111,44 @@ CloudFlare.define(
                 $(this.config.selector).sopafy();
             },
 
-            styleSheet : $('<style></style>').text(
-                [
-                    ".sopafied {",
-                        "display: inline;",
-                        "position: relative;",
-                        "text-decoration: none;",
-                        "color: #200020 !important;",
-                        "text-shadow: none !important;",
-                        "background: #000;",
-                        "cursor: pointer",
-                    "}",
-                    "\n",
-                    ".sopa_badge {",
-                        "background: #000;",
-                        "cursor: pointer",
-                        "text-decoration: none;",
-                        "position: fixed;",
-                        "top: 25px;",
-                        "right: -25px;",
-                        "padding: 1px 20px;",
-                        "-webkit-transform:rotate(45deg);",
-                        "-mox-transform:rotate(45deg);",
-                        "-o-transform:rotate(45deg);",
-                        "-ms-transform:rotate(45deg);",
-                    "}",
-                    "\n",
-                    ".sopa_popup button{",
-                        "margin-top: 10px;",
-                    "}",
-                    "\n",
-                    ".sopa_popup {",
-                        "text-align: center",
-                    "}"
-                ].join('')
-            ),
+            styleSheet : function(){
+                return $('<style></style>').text(
+                    [
+                        ".sopafied {",
+                            "display: inline;",
+                            "position: relative;",
+                            "text-decoration: none;",
+                            "color: #200020 !important;",
+                            "text-shadow: none !important;",
+                            "background: #000;",
+                            "cursor: pointer",
+                        "}",
+                        "\n",
+                        ".sopa_badge {",
+                            "background: #000;",
+                            "cursor: pointer",
+                            "text-decoration: none;",
+                            "position: fixed;",
+                            "top: 25px;",
+                            "right: -25px;",
+                            "padding: 1px 20px;",
+                            "z-index: 100000;",
+                            "-webkit-transform:rotate(45deg);",
+                            "-mox-transform:rotate(45deg);",
+                            "-o-transform:rotate(45deg);",
+                            "-ms-transform:rotate(45deg);",
+                        "}",
+                        "\n",
+                        ".sopa_popup button{",
+                            "margin-top: 10px;",
+                        "}",
+                        "\n",
+                        ".sopa_popup {",
+                            "text-align: center",
+                        "}"
+                    ].join('')
+                )
+            },
             $ : $,
             user : user
         })
