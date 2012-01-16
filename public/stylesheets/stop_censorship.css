@@ -16,7 +16,7 @@
     z-index: 100000;
 }
 
-.sopa_badge._cf_censorship_right {
+.sopa_badge.cfcensorshipright {
     top: 25px;
     right: -63px;
     -webkit-transform: rotate(45deg);
@@ -25,7 +25,7 @@
     -ms-transform: rotate(45deg);
 }
 
-.sopa_badge._cf_censorship_left {
+.sopa_badge.cfcensorship_left {
     top: 25px;
     left: -63px;
     -webkit-transform:rotate(-45deg);
@@ -34,12 +34,12 @@
     -ms-transform:rotate(-45deg);
 }
 
-.sopa_badge._cf_censorship_left.ie {
+.sopa_badge.cfcensorship_left.ie {
     top: 0px;
     right: 20px;
 }
 
-.sopa_badge._cf_censorship_right.ie {
+.sopa_badge.cfcensorship_right.ie {
     top: 0px;
     left: 20px;
 }
