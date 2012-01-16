@@ -1,4 +1,3 @@
-
 .sopafied {
     display: inline;
     position: relative;
@@ -6,7 +5,7 @@
     color: #200020 !important;
     text-shadow: none !important;
     background: #000;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .sopa_badge {
@@ -35,12 +34,12 @@
     -ms-transform:rotate(-45deg);
 }
 
-.sopa_badge.right.ie {
+.sopa_badge._cf_censorship_left.ie {
     top: 0px;
     right: 20px;
 }
 
-.sopa_badge.left.ie {
+.sopa_badge._cf_censorship_right.ie {
     top: 0px;
     left: 20px;
 }
@@ -52,7 +51,8 @@
     margin: 8px;
     border: 1px solid #e0e0e0;
     background: #f0f0f0;
-    color: #808080font-weight: 300;
+    color: #808080;
+    font-weight: 300;
 }
 .sopa_popup button {
     margin-top: 10px;
