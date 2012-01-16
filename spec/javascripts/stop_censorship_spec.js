@@ -12,7 +12,7 @@ describe("#sopafy", function(){
     beforeEach(function(){
         spyOn(this.sopa, "inspirationalDialog")
         this.page = $("<body>");
-        this.target = $("<div class='sopafy_me'>Hello I am a target for censorship.</div>")
+        this.target = $("<div class='sopafy_me'>Hello I am a target for censorship. </div><a href='javascript:void(0)'>This anchor should not be censored!</a>")
         this.page.append(this.target)
         this.sopa.config.cookie = "__cfduid"
     })
@@ -23,9 +23,9 @@ describe("#sopafy", function(){
             this.target.sopafy()
             this.sopa_wrappers = $("span.sopafied", this.target)
         })
-        it("should wrap some of the text in anchor tags", function(){
+        it("should wrap some of the text in span tags", function(){
             expect(this.sopa_wrappers.text()).toBe("Hellotargetcensorship")
-            expect(this.target.text()).toBe("Hello I am a target for censorship.")
+            expect(this.target.text()).toBe("Hello I am a target for censorship. This anchor should not be censored!")
         })
         it("should fire a inspirationalDialog when clicked", function(){
             $(this.sopa_wrappers[0]).click();
@@ -38,6 +38,14 @@ describe("#sopafy", function(){
             expect($(".sopa_badge").length).toBe(0);
         })
 
+        it("should not wrap text in an achor", function() {
+           
+            var sopaElementsInAnchor = this.target.eq(1).find('.sopafied')
+            console.info(this.target);
+
+            expect(sopaElementsInAnchor.length).toBe(0)
+        })
+
     })
     describe("when there isn't a CDN cookie", function(){
         beforeEach(function(){
@@ -46,7 +54,7 @@ describe("#sopafy", function(){
         })
         it("should not wrap the text in anchor tags", function(){
             expect(this.sopa_wrappers.text()).toBe("")
-            expect(this.target.text()).toBe("Hello I am a target for censorship.")
+            expect(this.target.text()).toBe("Hello I am a target for censorship. This anchor should not be censored!")
         })
         it("should create a reminder badge", function(){
             expect($(".sopa_badge").length).toBe(1);
@@ -61,7 +69,7 @@ describe("#sopafy", function(){
         })
         it("should not wrap the text in anchor tags", function(){
             expect(this.sopa_wrappers.text()).toBe("")
-            expect(this.target.text()).toBe("Hello I am a target for censorship.")
+            expect(this.target.text()).toBe("Hello I am a target for censorship. This anchor should not be censored!")
         })
         it("should create a reminder badge", function(){
             expect($(".sopa_badge").length).toBe(1);
