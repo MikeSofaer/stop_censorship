@@ -121,18 +121,20 @@ CloudFlare.define(
                     close = $("<button class='close'>").text("Close this window")
                         .bind("click", function() {
                             $.liteDialog('hide');
-                        });
-
-                box.append("<p>There is currently United States legislation under consideration that threatens most of the websites you care about.</p>")
-                    .append("<p>Call your Senator and say No to PIPA!</p>")
-                    .append(self.senatorDropdown())
-                    .append(tweet)
-                    .append(recensorButton)
-                    .append(americanCensorshipLink)
-                    .append(githubLink)
-                    .append("<br/>")
-                    .append(close)
-
+                        }),
+                    actions = [
+                        "<p>There is currently United States legislation under consideration that threatens most of the websites you care about.</p>",
+                        "<p>Call your Senator and say No to PIPA!</p>",
+                        self.senatorDropdown(),
+                        tweet,
+                        recensorButton,
+                        americanCensorshipLink,
+                        githubLink,
+                        close
+                    ];
+                $.each(actions, function(i, item){
+                    box.append("<br/>").append(item)
+                })
                 return box;
             },
 
