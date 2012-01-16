@@ -64,7 +64,7 @@ CloudFlare.define(
                     var senators = senatorsByState[state]
                     console.log(this, $(this), $(this).val(), state, senators, senators.toString())
 
-                    target.text(senators.slice(0, 2).join(', ') + '<br />' + senators.slice(2, 4).join(', '))
+                    target.html(senators.slice(0, 2).join(', ') + (senators.length > 2 ? '<br />' + senators.slice(2, 4).join(', ') : ''))
                 })
                 $.each(senatorsByState, function(state, senators){
                     dropdown.append(
@@ -79,14 +79,25 @@ CloudFlare.define(
                 var twitterHandle = this.config.twitterHandle,
                     url = "http://americancensorship.org/",
                     tweetText = function(twitterHandle) {
+
+                        var locationParts = path.parseURL(window.location.toString());
+
+                        locationParts.path = "";
+                        locationParts.query = "";
+                        locationParts.hash = "";
+
+                        var fullURL = path.stringifyURL(locationParts),
+                            host = locationParts.host;
+
                         return twitterHandle ?
-                            "Thank you @"+ twitterHandle + " for helping defend freedom" :
-                            "ALTERNATE TWITTER MESSAGE GOES HERE"
+                            "Thank you @" + twitterHandle + " for helping defend the Internet from censorship" :
+                            "Thank you " + fullURL + " (" + host + ") for helping defend the Internet from censorship";
+
                     }
                     box = $("<div class='sopa_popup'><h2>Help protect freedom.</h2></div>"),
                     tweet = $("<button>",{type:'button'}).text("Tweet about it.")
                         .bind("click", function(){
-                            tweetWindow(tweetText())
+                            self.tweetWindow(tweetText())
                         }),
                     recensorButton = $("<button>", {"class" : "recensor", text: "I liked the bars, put them back!"})
                         .bind("click", function(){
