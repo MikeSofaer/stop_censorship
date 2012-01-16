@@ -125,9 +125,9 @@ describe("protestContent", function(){
             expect(this.content.text()).toContain("handle")
         })
         it("should have a dropdown list of senators", function(){
-            expect(this.content.find(".phone").text()).not.toContain("907-456-0233")
+            expect(this.content.text()).not.toContain("907-456-0233")
             this.content.find("select").val("AK").change()
-            expect(this.content.find(".phone").text()).toContain("907-456-0233")
+            expect(this.content.text()).toContain("907-456-0233")
         })
         it("should have a button to restore the bars", function(){
             spyOn(user, "setCookie")
@@ -167,5 +167,29 @@ describe("styleSheet", function(){
     })
     afterEach(function(){
         this.styleSheet.remove()
+    })
+})
+
+describe("tweetWindow", function(){
+    beforeEach(function(){
+        spyOn(window, "open")
+        this.sopa.tweetWindow({
+            text: "te>xt",
+            url: "url",
+            hashtag: "hashtag"
+        })
+        this.tweet = window.open.calls[0].args[0]
+    })
+    it("should have the right text", function(){
+        expect(this.tweet).toContain("text=te%3Ext")
+    })
+    it("should have the right url", function(){
+        expect(this.tweet).toContain("url=url")
+    })
+    it("should have the right hashtag", function(){
+        expect(this.tweet).toContain("hashtags=hashtag")
+    })
+    it("should have the right via", function(){
+        expect(this.tweet).toContain("via=cloudflare")
     })
 })

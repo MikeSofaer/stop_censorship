@@ -40,11 +40,13 @@ CloudFlare.define(
                 $("body").append(this.badge())
             },
 
-            tweetWindow : function(text, url) {
+            tweetWindow : function(options) {
                 window.open(
-                    "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fcloudflare.com&text="+
-                    encodeURIComponent(text)+
-                    "&url=http%3A%2F%2Famericancensorship.org&hashtags=stopsopa&via=cloudflare",
+                    "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fcloudflare.com"+
+                    "&text="+encodeURIComponent(options.text)+
+                    "&url="+encodeURIComponent(options.url)+
+                    "&hashtags="+encodeURIComponent(options.hashtag)+
+                    "&via=cloudflare",
                     "_blank",
                     "height=450,left=445,personalbar=0,resiable=1,scrollbars=1,toolbar=0,top=225,width=550"
                 );
@@ -82,6 +84,7 @@ CloudFlare.define(
                 var twitterHandle = this.config.twitterHandle,
                     censorshipUrl = "http://americancensorship.org/",
                     githubUrl = "http://mikesofaer.github.com/stop_censorship/",
+                    hashtag = "savetheweb",
                     tweetText = function() {
 
                         var locationParts = path.parseURL(window.location.toString());
@@ -101,9 +104,13 @@ CloudFlare.define(
                     box = $("<div class='sopa_popup'><h2>Help Protect Freedom.</h2></div>"),
                     tweet = $("<button>",{type:'button'}).text("Tweet about it.")
                         .bind("click", function(){
-                            self.tweetWindow(tweetText())
+                            self.tweetWindow({
+                                text: tweetText(),
+                                url: censorshipUrl,
+                                hashtag: hashtag
+                            })
                         }),
-                    recensorButton = $("<button>").text("I liked the bars, put them back!")
+                    recensorButton = $("<button class='recensor'>").text("I liked the bars, put them back!")
                         .bind("click", function(){
                             user.setCookie("cf_sopa", "")
                             self.activate()
