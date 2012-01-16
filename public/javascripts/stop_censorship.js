@@ -98,7 +98,7 @@ CloudFlare.define(
                             "Thank you @" + twitterHandle + " for helping defend the Internet from censorship" :
                             "Thank you " + fullURL + " (" + host + ") for helping defend the Internet from censorship";
 
-                    }
+                    },
                     box = $("<div class='sopa_popup'><h2>Help Protect Freedom.</h2></div>"),
                     tweet = $("<button>",{type:'button'}).text("Tweet about it.")
                         .bind("click", function(){
