@@ -80,7 +80,8 @@ CloudFlare.define(
             protestContent : function() {
                 var self = this;
                 var twitterHandle = this.config.twitterHandle,
-                    url = "http://americancensorship.org/",
+                    censorshipUrl = "http://americancensorship.org/",
+                    githubUrl = "http://github.com/MikeSofaer/stop_censorship/",
                     tweetText = function(twitterHandle) {
 
                         var locationParts = path.parseURL(window.location.toString());
@@ -102,15 +103,20 @@ CloudFlare.define(
                         .bind("click", function(){
                             self.tweetWindow(tweetText())
                         }),
-                    recensorButton = $("<button class='recensor'>I liked the bars, put them back!</button>")
+                    recensorButton = $("<button class='recensor'>", {text: "I liked the bars, put them back!"})
                         .bind("click", function(){
                             user.setCookie("cf_sopa", "")
                             self.activate()
                         }),
-                    americanCensorshipButton = $("<button class='more_info'>").text("Read more at AmericanCensorship.org")
+                    americanCensorshipButton = $("<button class='more_info'>", {rel : "nofollow", text : "Read more at AmericanCensorship.org"})
                         .bind("click", function() {
-                            window.open(url);
+                            window.open(censorshipUrl);
                         }),
+                    githubButton = $("<button class='github'>", {rel : "nofollow", text : "Get this app for your page"})
+                        .bind("click", function() {
+                            window.open(githubUrl);
+                        }),
+
                     close = $("<button class='close'>").text("Close this window")
                         .bind("click", function() {
                             $.liteDialog('hide');
@@ -122,6 +128,7 @@ CloudFlare.define(
                     .append(tweet)
                     .append(americanCensorshipButton)
                     .append(recensorButton)
+                    .append(githubButton)
                     .append(close)
 
                 return box;
