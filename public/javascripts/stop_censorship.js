@@ -55,7 +55,7 @@ CloudFlare.define(
                 var senatorsByState = {}
                 $.each(senators, function(i, senator){
                     
-                    var state = senator[0];
+                    var state = %.trim(senator[0]);
 
                     senatorsByState[state] = senatorsByState[state] || [];
                     senatorsByState[state].push(senator.slice(1));
@@ -65,9 +65,9 @@ CloudFlare.define(
                 var dropdown = $("<select id='StopCensorshipStates'>").bind("change", function(){
                     var state = $(this).val()
                     var senators = senatorsByState[state]
-                    console.log(this, $(this), $(this).val(), state, senators, senators.toString())
+                    console.log(state + " - " + senators)
 
-                    target.html(senators[0].join(', ') + (senators.length > 2 ? '<br />' + senators[1].join(', ') : ''))
+                    target.html(senators[0].join(', ') + (senators.length > 1 ? '<br />' + senators[1].join(', ') : ''))
                 })
                 $("<label for='StopCensorshipStates'>Select your state:</label>").insertBefore(dropdown);
                 $.each(senatorsByState, function(state, senators){
