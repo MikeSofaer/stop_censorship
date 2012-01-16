@@ -202,8 +202,8 @@ CloudFlare.define(
         $.fn.sopafy = function() {
             var cookie = sopaProtest.config.cookie;
 
+            sopaProtest.placeBadge()
             if((cookie && !user.getCookie(cookie)) || user.getCookie("cf_sopa")) {
-                sopaProtest.placeBadge()
                 return
             }
 

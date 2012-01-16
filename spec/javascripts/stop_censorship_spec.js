@@ -48,8 +48,8 @@ describe("#sopafy", function(){
         it("should set a censorship cookie", function(){
             expect(user.getCookie("cf_sopa")).toBe("true")
         })
-        it("should not create a reminder badge", function(){
-            expect($(".sopa_badge").length).toBe(0);
+        it("should create a reminder badge", function(){
+            expect($(".sopa_badge").length).toBe(1);
         })
 
         it("should not wrap text in an achor", function() {
