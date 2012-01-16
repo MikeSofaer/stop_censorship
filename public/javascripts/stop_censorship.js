@@ -14,7 +14,7 @@ CloudFlare.define(
         var cdnPath = "http://mikesofaer.github.com/stop_censorship/public/";
 
         var config = $.extend({
-            selector : "header, h1, h2, h3,p, a, li, span, em",
+            selector : "header, h1, h2, h3, p, li, span, em",
             position_x : "right",
             onCloudflare : false,
             regex : '.{5}'
