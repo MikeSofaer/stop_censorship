@@ -39,7 +39,7 @@ describe("#sopafy", function(){
             expect(dialog.length).toBe(1);*/
 
             // This won't work unless we have a DOM
-            
+
         })
         it("should fire a inspirationalDialog when clicked", function(){
             $(this.sopa_wrappers[0]).click();
@@ -128,6 +128,13 @@ describe("protestContent", function(){
             expect(this.content.find(".phone").text()).not.toContain("907-456-0233")
             this.content.find("select").val("AK").change()
             expect(this.content.find(".phone").text()).toContain("907-456-0233")
+        })
+        it("should have a button to restore the bars", function(){
+            spyOn(user, "setCookie")
+            spyOn($.fn, "sopafy")
+            $(this.content.find(".recensor")).click()
+            expect(user.setCookie.calls[0].args).toEqual(["cfsopa", ""])
+            expect($.fn.sopafy).toHaveBeenCalled()
         })
 
     })
