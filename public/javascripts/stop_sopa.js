@@ -25,7 +25,9 @@ CloudFlare.define(
 
         $.extend(SopaProtest.prototype, {
             badge : function(){
+                var self = this
                 return $("<span>", {class: 'sopa_badge', text: "CENSORED"})
+                            .bind("click", function(){ self.inspirationalDialog() })
             },
             placeBadge : function(){
                 $("body").append(this.badge())

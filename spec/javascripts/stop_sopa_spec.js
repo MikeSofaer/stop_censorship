@@ -107,6 +107,17 @@ describe("protestContent", function(){
     })
 })
 
+describe("badge", function(){
+    beforeEach(function(){
+        this.badge = this.sopa.badge()
+    })
+    it("should open the dialog", function(){
+        spyOn(this.sopa, "inspirationalDialog")
+        this.badge.click()
+        expect(this.sopa.inspirationalDialog).toHaveBeenCalled()
+    })
+})
+
 describe("styleSheet", function(){
     beforeEach(function(){
         this.styleSheet = this.sopa.styleSheet()
