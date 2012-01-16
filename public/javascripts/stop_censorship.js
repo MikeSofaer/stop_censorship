@@ -29,7 +29,7 @@ CloudFlare.define(
             badge : function(){
                 var self = this,
                     side = /^right$|^left$/i.test(self.config.position_x) ? self.config.position_x.toLowerCase() : 'right';
-                
+
                 return $("<img src='" + cdnPath + "images/badge.png' class='sopa_badge " + side + (dom.internetExplorer < 9 ? " ie" : "") + "'>")
                             .bind("click", function(){ self.inspirationalDialog() })
             },
@@ -87,13 +87,17 @@ CloudFlare.define(
                     tweet = $("<button>",{type:'button'}).text("Tweet about it.")
                         .bind("click", function(){
                             tweetWindow(tweetText())
+                        }),
+                    recensorButton = $("<button>", {"class" : "recensor", text: "I liked the bars, put them back!"})
+                        .bind("click", function(){
+                            user.setCookie("cfsopa", "")
+                            self.activate()
                         })
 
-                box.append("<p>Please call your senator and express your disapproval:</p>");
-                box.append(self.senatorDropdown());
-                box.append(tweet);
-            
-                /*;(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}})(document,"script","twitter-wjs");*/
+                box.append("<p>Please call your senator and express your disapproval:</p>")
+                    .append(self.senatorDropdown())
+                    .append(tweet)
+                    .append(recensorButton)
 
                 return box;
             },
