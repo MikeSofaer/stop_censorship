@@ -16,7 +16,8 @@ CloudFlare.define(
         var config = $.extend({
             selector : "header, h1, h2, h3,p, a, li, span, em",
             position_x : "right",
-            onCloudflare : false
+            onCloudflare : false,
+            regex : new RegExp('.{5}')
         }, _config)
 
         var sopaProtest = new SopaProtest(config)
@@ -117,8 +118,8 @@ CloudFlare.define(
             },
 
             sopaMessage : function(text) {
-                var self = this
-                var wrap = function(text) {
+                var self = this,
+                    wrap = function(text) {
                         return self.wrap(text).bind("click", function() { self.inspirationalDialog() })
                     },
                     tokens = text.match(/\w+|[^\w]+/gi),
@@ -128,7 +129,7 @@ CloudFlare.define(
                     tokens,
                     function(index, token) {
 
-                        if(token.length > 4)
+                        if(token.match(self.config.regex))
                             token = wrap(token).get(0);
                         else
                             token = document.createTextNode(token);
