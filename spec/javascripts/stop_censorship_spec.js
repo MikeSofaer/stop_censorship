@@ -53,7 +53,6 @@ describe("#sopafy", function(){
         })
 
         it("should not wrap text in an achor", function() {
-           
             var sopaElementsInAnchor = this.target.eq(1).find('.sopafied')
             console.info(this.target);
 
@@ -124,6 +123,11 @@ describe("protestContent", function(){
         })
         xit("should have the twitter handle", function(){
             expect(this.content.text()).toContain("handle")
+        })
+        it("should have a dropdown list of senators", function(){
+            expect(this.content.find(".phone").text()).not.toContain("907-456-0233")
+            this.content.find("select").val("AK").change()
+            expect(this.content.find(".phone").text()).toContain("907-456-0233")
         })
 
     })
