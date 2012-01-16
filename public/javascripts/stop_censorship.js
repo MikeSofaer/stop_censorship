@@ -55,7 +55,7 @@ CloudFlare.define(
                 var senatorsByState = {}
                 $.each(senators, function(i, senator){
                     
-                    var state = %.trim(senator[0]);
+                    var state = $.trim(senator[0]);
 
                     senatorsByState[state] = senatorsByState[state] || [];
                     senatorsByState[state].push(senator.slice(1));
