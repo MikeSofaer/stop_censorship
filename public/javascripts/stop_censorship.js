@@ -17,8 +17,10 @@ CloudFlare.define(
             selector : "header, h1, h2, h3,p, a, li, span, em",
             position_x : "right",
             onCloudflare : false,
-            regex : new RegExp('.{5}')
+            regex : '.{5}'
         }, _config)
+
+        config.regex = new RegExp(config.regex)
 
         var sopaProtest = new SopaProtest(config)
 
