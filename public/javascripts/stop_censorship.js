@@ -37,7 +37,9 @@ CloudFlare.define(
                             .bind("click", function(){ self.inspirationalDialog() })
             },
             placeBadge : function(){
-                $("body").append(this.badge())
+                if(!$("body").find(".sopa_badge").length) {
+                    $("body").append(this.badge())
+                }
             },
 
             tweetWindow : function(options) {

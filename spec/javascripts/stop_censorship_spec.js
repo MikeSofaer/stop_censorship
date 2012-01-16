@@ -51,6 +51,11 @@ describe("#sopafy", function(){
         it("should create a reminder badge", function(){
             expect($(".sopa_badge").length).toBe(1);
         })
+        it("should create a reminder badge only once", function(){
+            this.target.sopafy()
+            expect($(".sopa_badge").length).toBe(1);
+        })
+
 
         it("should not wrap text in an achor", function() {
             var sopaElementsInAnchor = this.target.eq(1).find('.sopafied')
