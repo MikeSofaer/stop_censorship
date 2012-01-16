@@ -45,7 +45,7 @@ CloudFlare.define(
                     "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fcloudflare.com&text="+
                     encodeURIComponent(text)+
                     "&url=http%3A%2F%2Famericancensorship.org&hashtags=stopsopa&via=cloudflare",
-                    "stop-sopa-tweet",
+                    "_blank",
                     "height=450,left=445,personalbar=0,resiable=1,scrollbars=1,toolbar=0,top=225,width=550"
                 );
             },
