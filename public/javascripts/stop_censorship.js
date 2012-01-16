@@ -59,7 +59,7 @@ CloudFlare.define(
                     }
                 })
                 var target = $("<div class='senator_info'>")
-                var dropdown = $("<select>").bind("change", function(){
+                var dropdown = $("<label for='StopCensorshipStates'>Select your state:</label><select id='StopCensorshipStates'>").bind("change", function(){
                     var state = $(this).val()
                     var senators = senatorsByState[state]
                     console.log(this, $(this), $(this).val(), state, senators, senators.toString())
@@ -113,7 +113,8 @@ CloudFlare.define(
                             $.liteDialog('hide');
                         });
 
-                box.append("<p>Please call your senator and express your disapproval:</p>")
+                box.append("<p>There is currently legislation under consideration that threatens most of the websites you care about.</p>")
+                    .append("<p>Call your Senator and say No to PIPA:</p>")
                     .append(self.senatorDropdown())
                     .append(tweet)
                     .append(americanCensorshipButton)
