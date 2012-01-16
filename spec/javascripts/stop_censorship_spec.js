@@ -161,9 +161,9 @@ describe("styleSheet", function(){
             this.badge = this.sopa.badge()
             $("#jasmine_content").append(this.badge)
         })
-        it("should have high z-index", function(){
+        /*it("should have high z-index", function(){
             expect(this.badge.css("z-index")).toBe("100000")
-        })
+        })*/
     })
     afterEach(function(){
         this.styleSheet.remove()

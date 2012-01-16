@@ -182,85 +182,7 @@ CloudFlare.define(
             },
 
             styleSheet : function(){
-                return $('<style type="text/css"></style>').text(
-                    [
-                        ".sopafied {",
-                            "display: inline;",
-                            "position: relative;",
-                            "text-decoration: none;",
-                            "color: #200020 !important;",
-                            "text-shadow: none !important;",
-                            "background: #000;",
-                            "cursor: pointer",
-                        "}",
-                        "\n",
-                        ".sopa_badge {",
-                            "background: transparent;",
-                            "cursor: pointer;",
-                            "text-decoration: none;",
-                            "position: fixed;",
-                            "z-index: 100000;",
-                        "}\n",
-                        ".sopa_badge.right {",
-                            "top: 25px;",
-                            "right: -63px;",
-                            "-webkit-transform:rotate(45deg);",
-                            "-moz-transform:rotate(45deg);",
-                            "-o-transform:rotate(45deg);",
-                            "-ms-transform:rotate(45deg);",
-                        "}\n",
-                        ".sopa_badge.left {",
-                            "top: 25px;",
-                            "left: -63px;",
-                            "-webkit-transform:rotate(-45deg);",
-                            "-moz-transform:rotate(-45deg);",
-                            "-o-transform:rotate(-45deg);",
-                            "-ms-transform:rotate(-45deg);",
-                        "}\n",
-                        ".sopa_badge.right.ie {",
-                            "top: 0px;",
-                            "right: 20px;",
-                        "}\n",
-                        ".sopa_badge.left.ie {",
-                            "top: 0px;",
-                            "left: 20px;",
-                        "}\n",
-                        ".sopa_popup .senator_info {",
-                            "display: block;",
-                            "position: relative;",
-                            "padding: 8px;",
-                            "margin: 8px;",
-                            "border: 1px solid #e0e0e0;",
-                            "background: #f0f0f0;",
-                            "color: #808080",
-                            "font-weight: 300",
-                        "}\n",
-                        ".sopa_popup button {",
-                            "margin-top: 10px;",
-                            "padding: 3px;",
-                        "}",
-                        "\n",
-                        ".sopa_popup h2 {",
-                            "font-size: 20px",
-                            "font-weight: 800",
-                        "}",
-                        ".sopa_popup p {",
-                            "font-size: 14px",
-                            "font-weight: 500",
-                        "}",
-                        ".sopa_popup {",
-                            "font-family: 'Helvetica Neue', Arial, sans-serif !important;",
-                            "text-align: center;",
-                        "}",
-                        "#hyLiteDlg {",
-                            "border-radius: 4px;",
-                            "-webkit-border-radius: 4px;",
-                            "-moz-border-radius: 4px;",
-                            "-o-border-radius: 4px;",
-                            "-ms-border-radius: 4px;",
-                        "}\n"
-                    ].join('')
-                )
+                return $('<link rel="stylesheet" media="screen" href="' + cdnPath + 'stylesheets/stop_censorship.css">');
             },
             $ : $,
             user : user
@@ -293,7 +215,7 @@ CloudFlare.define(
         };
 
         if (!window.jasmine) {
-            $("head").prepend(sopaProtest.styleSheet());
+            $("head").append(sopaProtest.styleSheet());
             sopaProtest.activate();
         }
 
