@@ -58,12 +58,13 @@ CloudFlare.define(
                         senatorsByState[senator[0]] = [[senator[1], senator[2]]]
                     }
                 })
-                var target = $("<div class='senator-info'>")
+                var target = $("<div class='senator_info'>")
                 var dropdown = $("<select>").bind("change", function(){
                     var state = $(this).val()
                     var senators = senatorsByState[state]
                     console.log(this, $(this), $(this).val(), state, senators, senators.toString())
-                    target.text(senators.toString())
+
+                    target.text(senators.slice(0, 2).join(', ') + '\n' + senators.slice(2, 4).join(', '))
                 })
                 $.each(senatorsByState, function(state, senators){
                     dropdown.append(
@@ -90,6 +91,7 @@ CloudFlare.define(
 
                 box.append("<p>Please call your senator and express your disapproval:</p>");
                 box.append(self.senatorDropdown());
+                box.append(tweet);
             
                 /*;(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}})(document,"script","twitter-wjs");*/
 
