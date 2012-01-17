@@ -8,27 +8,9 @@ Put your site on CloudFlare and then add the Stop Censorship application
 
 ###What if I'm not on CloudFlare?
 
-To test it out, use this bookmarklet:
+To test it out, use the bookmarklet on the main app page:
 
-```javascript
-javascript:(function() {try{if(!window.CloudFlare){window.CloudFlare=[];var a=document.createElement("script"),b=document.getElementsByTagName("head")[0];a.type="text/javascript";a.async=!0;a.src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js";b.appendChild(a)}}catch(c){};var a=window.CloudFlare;a.push({paths:{stop_censorship:"//ajax.cloudflare.com/cdn-cgi/nexp/apps/"}});a.push(function(b,c){c("stop_censorship/config",function(){return {}});b(["stop_censorship"])})})();
-```
-
-or run this in your browser's console:
-
-```JavaScript
-try{if(!window.CloudFlare){window.CloudFlare=[];var a=document.createElement("script"),b=document.getElementsByTagName("head")[0];a.type="text/javascript";a.async=!0;a.src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js";b.appendChild(a)}}catch(c){};
-
-var censorshipConfig = {
-    
-    "twitterHandle" : "MyTwitterHandle",
-    "position_x" : "right",
-    "selector" : "p, h1, .censor_me"
-
-}
-
-var a=window.CloudFlare;a.push({paths:{stop_censorship:"//ajax.cloudflare.com/cdn-cgi/nexp/apps/"}});a.push(function(b,c){c("stop_censorship/config",function(){return censorshipConfig});b(["stop_censorship"])});
-```
+http://mikesofaer.github.com/stop_censorship
 
 If you want to support the efforts to stop American censorship, add this to your page:
 
@@ -40,7 +22,7 @@ If you want to support the efforts to stop American censorship, add this to your
 
     var censorshipConfig = {
         
-        "twitterHandle" : "MyTwitterHandle", // Your Twitter handle; if not provided, your website domain will be used.
+        "twitterHandle" : null, // Your Twitter handle; if not provided, your website domain will be used.
         "position_x" : "right", // Badge position - right or left
         "selector" : "p, h1, .censor_me" // Optional selector for elements to censor. Remove for default.
 

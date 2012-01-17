@@ -155,9 +155,11 @@ CloudFlare.define(
             },
 
             inspirationalDialog : function() {
-                $("span.sopafied").each(function(i, item){
-                    $(item).replaceWith($(item).html())
-                })
+                if(!this.config.persistent) {
+                    $("span.sopafied").each(function(i, item){
+                        $(item).replaceWith($(item).html())
+                    })
+                }
 
                 this.placeBadge();
 
@@ -212,8 +214,11 @@ CloudFlare.define(
             var cookie = sopaProtest.config.cookie;
 
             sopaProtest.placeBadge()
-            if((cookie && !user.getCookie(cookie)) || user.getCookie("cf_sopa")) {
-                return
+            if(!sopaProtest.config.persistent) {
+                if ((cookie && !user.getCookie(cookie)) || user.getCookie("cf_sopa")) {
+                    console.info(sopaProtest.config)
+                    return
+                }
             }
 
             this.each(

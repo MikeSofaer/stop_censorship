@@ -82,39 +82,69 @@ describe("#sopafy", function(){
         beforeEach(function(){
             user.setCookie("__cfduid", "something")
             user.setCookie("cf_sopa", "true")
-            this.target.sopafy()
-            this.sopa_wrappers = $("span.sopafied", this.target)
         })
-        it("should not wrap the text in anchor tags", function(){
-            expect(this.sopa_wrappers.text()).toBe("")
-            expect(this.target.text()).toBe("Hello I am a target for censorship. This anchor should not be censored!")
+        describe("and persistent mode is not on", function(){
+            beforeEach(function(){
+                this.target.sopafy()
+                this.sopa_wrappers = $("span.sopafied", this.target)
+            })
+            it("should not wrap the text in anchor tags", function(){
+                expect(this.sopa_wrappers.text()).toBe("")
+                expect(this.target.text()).toBe("Hello I am a target for censorship. This anchor should not be censored!")
+            })
+            it("should create a reminder badge", function(){
+                expect($(".sopa_badge").length).toBe(1);
+            })
         })
-        it("should create a reminder badge", function(){
-            expect($(".sopa_badge").length).toBe(1);
+        describe("and persistent mode is on", function(){
+            beforeEach(function(){
+                this.sopa.config.persistent = true
+                this.target.sopafy()
+                this.sopa_wrappers = $("span.sopafied", this.target)
+            })
+            it("should wrap the text in anchor tags", function(){
+                expect(this.sopa_wrappers.text()).toBe("Hellotargetcensorship")
+                expect(this.target.text()).toBe("Hello I am a target for censorship. This anchor should not be censored!")
+            })
+            it("should create a reminder badge", function(){
+                expect($(".sopa_badge").length).toBe(1);
+            })
         })
+
     })
 })
 
 describe("inspirationalDialog", function(){
     beforeEach(function(){
         spyOn($, "liteDialog");
+        this.target = $("<span class='sopafied'>Hello I am a target for censorship.</a>")
+        $("#jasmine_content").html(this.target)
     })
     it("should create a dialog", function(){
         this.sopa.inspirationalDialog();
         expect($.liteDialog).toHaveBeenCalled();
     })
-    it("should unsopafy the page", function(){
-        this.target = $("<span class='sopafied'>Hello I am a target for censorship.</a>")
-        $("#jasmine_content").append(this.target)
-        this.sopa.inspirationalDialog();
-        expect($("#jasmine_content span.sopafied").length).toBe(0);
-        expect($("#jasmine_content").text()).toBe("Hello I am a target for censorship.")
-    })
     it("should create a reminder badge", function(){
         this.sopa.inspirationalDialog();
         expect($(".sopa_badge").length).toBe(1);
     })
-
+    describe("when not in persistent mode", function(){
+        it("should unsopafy the page", function(){
+            this.sopa.config.persistent = false
+            this.sopa.inspirationalDialog()
+            expect($("#jasmine_content span.sopafied").length).toBe(0)
+            expect($("#jasmine_content").text()).toBe("Hello I am a target for censorship.")
+        })
+    })
+    describe("when in persistent mode", function(){
+        it("should unsopafy the page", function(){
+            this.sopa.config.persistent = true
+            this.sopa.inspirationalDialog()
+            console.info($("#jasmine_content span.sopafied"))
+            expect($("#jasmine_content span.sopafied").length).toBe(1)
+            expect($("#jasmine_content").text()).toBe("Hello I am a target for censorship.")
+        })
+    })
 })
 
 describe("protestContent", function(){

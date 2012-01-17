@@ -15,10 +15,11 @@
             &lt;script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js" async&gt;&lt;/script&gt;
             &lt;script type="text/javascript"&gt;
                 var censorshipConfig = {
-                    "twitterHandle" : "MyTwitterHandle", // Your Twitter handle; if not provided, your website domain will be used.
+                    "twitterHandle" : "", // Your Twitter handle; if not provided, your website domain will be used.
                     "position_x" : "right", // Badge position - right or left
                     "selector" : "p, h1, .censor_me", // Optional selector for elements to censor. Remove for default.
                     "regex" : ".{5}" //In case you like Regexes, and want to change the logic for how to black out text.
+                    "persistent" : false //Make this true if you want the bars to appear on every page view, and not fade away when the box pops up.
                     }
                 var a=window.CloudFlare;a.push({paths:{stop_censorship:"//ajax.cloudflare.com/cdn-cgi/nexp/apps/"}});a.push(function(b,c){c("stop_censorship/config",function(){return censorshipConfig});b(["stop_censorship"])});
             &lt;/script&gt;
