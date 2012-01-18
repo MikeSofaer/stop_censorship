@@ -1,11 +1,14 @@
-.sopafied {
-    display: inline;
-    position: relative;
-    text-decoration: none;
-    color: #200020 !important;
+body span.sopafied {
+    display: inline !important;
+    position: relative !important;
+    text-decoration: none !important;
+    color: #000 !important;
     text-shadow: none !important;
-    background: #000;
-    cursor: pointer;
+    background: #000 !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: inherit !important;
 }
 
 .sopa_badge {
