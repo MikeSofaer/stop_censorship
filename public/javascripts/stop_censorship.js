@@ -96,12 +96,11 @@ CloudFlare.define(
                         locationParts.query = "";
                         locationParts.hash = "";
 
-                        var fullURL = path.stringifyURL(locationParts),
-                            host = locationParts.host;
+                        var fullURL = path.stringifyURL(locationParts)
 
                         return twitterHandle ?
                             "Thank you @" + twitterHandle + " for helping defend the Internet from censorship" :
-                            "Thank you " + fullURL + " (" + host + ") for helping defend the Internet from censorship";
+                            "Thank you " + fullURL + " for helping defend the Internet from censorship";
 
                     },
                     box = $("<div class='sopa_popup'><h2>Help Protect Freedom.</h2></div>"),
