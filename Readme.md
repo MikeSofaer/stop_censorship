@@ -21,17 +21,20 @@ If you want to support the efforts to stop American censorship, add this to your
 
 
     var censorshipConfig = {
-        
+
         "twitterHandle" : null, // Your Twitter handle; if not provided, your website domain will be used.
         "position_x" : "right", // Badge position - right or left
         "selector" : "p, h1, .censor_me" // Optional selector for elements to censor. Remove for default.
         "persistant" : true, // If true, page will always show black bars; if false, it will only show them on the first visit
 
     }
-    
+
     var a=window.CloudFlare;a.push({paths:{stop_censorship:"//ajax.cloudflare.com/cdn-cgi/nexp/apps/"}});a.push(function(b,c){c("stop_censorship/config",function(){return censorshipConfig});b(["stop_censorship"])});
 
 </script>
 ```
 
+## Contributing
+
+This is public domain software.  Submitting a patch involves releasing your patch to the public domain
 
