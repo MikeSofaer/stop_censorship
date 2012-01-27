@@ -204,9 +204,7 @@ CloudFlare.define(
 
             styleSheet : function(){
                 return $('<link rel="stylesheet" media="screen" href="' + cdnPath + 'stylesheets/stop_censorship.css">');
-            },
-            $ : $,
-            user : user
+            }
         })
 
         $.fn.sopafy = function() {

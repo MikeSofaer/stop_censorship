@@ -2,11 +2,13 @@ beforeEach(function() {
     this.sopa = null;
     var self = this;
 
-    var promise = CloudFlare.require(["stop_censorship"], function(sopa){
-        self.sopa = sopa;
-        window.$ = sopa.$
-        window.user = sopa.user
-    })
+    var promise = CloudFlare.require(["stop_censorship","cloudflare/jquery1.7", "cloudflare/user"],
+        function(stop_censorship, $, user){
+            self.sopa = stop_censorship;
+            window.$ = $
+            window.user = user
+        }
+    )
 
     waitsFor(function(){
         return this.sopa !== null;
