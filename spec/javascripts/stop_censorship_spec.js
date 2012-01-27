@@ -18,8 +18,8 @@ describe("#sopafy", function(){
     })
     describe("when there is a CDN cookie, and no censorship cookie", function(){
         beforeEach(function(){
-            user.setCookie("__cfduid", "something")
-            user.setCookie("cf_sopa", "")
+            this.user.setCookie("__cfduid", "something")
+            this.user.setCookie("cf_sopa", "")
             this.target.sopafy()
             this.sopa_wrappers = $("span.sopafied", this.target)
         })
@@ -46,7 +46,7 @@ describe("#sopafy", function(){
             expect(this.sopa.inspirationalDialog).toHaveBeenCalled();
         })
         it("should set a censorship cookie", function(){
-            expect(user.getCookie("cf_sopa")).toBe("true")
+            expect(this.user.getCookie("cf_sopa")).toBe("true")
         })
         it("should create a reminder badge", function(){
             expect($(".sopa_badge").length).toBe(1);
@@ -80,8 +80,8 @@ describe("#sopafy", function(){
     })
     describe("when there is a censorship cookie", function(){
         beforeEach(function(){
-            user.setCookie("__cfduid", "something")
-            user.setCookie("cf_sopa", "true")
+            this.user.setCookie("__cfduid", "something")
+            this.user.setCookie("cf_sopa", "true")
         })
         describe("and persistent mode is not on", function(){
             beforeEach(function(){
@@ -165,10 +165,10 @@ describe("protestContent", function(){
             expect(this.content.text()).toContain("907-456-0233")
         })
         it("should have a button to restore the bars", function(){
-            spyOn(user, "setCookie")
+            spyOn(this.user, "setCookie")
             spyOn($.fn, "sopafy")
             $(this.content.find(".recensor")).click()
-            expect(user.setCookie.calls[0].args).toEqual(["cf_sopa", ""])
+            expect(this.user.setCookie.calls[0].args).toEqual(["cf_sopa", ""])
             expect($.fn.sopafy).toHaveBeenCalled()
         })
         it("should have a link to the PIPA video", function(){
