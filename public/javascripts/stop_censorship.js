@@ -11,7 +11,7 @@ CloudFlare.define(
             }
         }
 
-        var cdnPath = "//ajax.cloudflare.com/cdn-cgi/nexp/";
+        var cdnPath = "//www.cloudflare.com/static/media/images/stop-censorship/";
 
         var config = $.extend({
             selector : "header, h1, h2, h3, p, li, span, em",
